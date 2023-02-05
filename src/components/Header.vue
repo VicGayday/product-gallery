@@ -1,9 +1,9 @@
 <template>
   <div class="header-container">
-    <div>
-       <img src="@/assets/logo.png" alt="logo" />
+    <div class="logo-wrapper">
+      <img :src="iconContent" alt="logo" class="logo-img">
     </div>
-    <button>Update products</button>
+    <button class="update-btn">Update products</button>
   </div>
 </template>
 <script>
@@ -13,15 +13,38 @@ import logo from "@/assets/logo.svg"
 export default defineComponent({
   name: "Header",
   setup() {
-  //  const iconContent = logo;
-  //  const iconAlt = "logo";
-  //  const iconStyle = "width: 10%; height: 10%;";
-
+    const iconContent = logo
    return {
-    // iconContent,
-    // iconStyle,
-    // iconAlt,
+iconContent
    }
   },
 })
 </script>
+
+<style scoped>
+.header-container {
+  background-color: #5775A9;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 48px;
+}
+.update-btn {
+  border-radius: 100px;
+  border: none;
+  padding: 8px 16px;
+  background-color: #FFFFFF;
+  margin-right: 5%;
+  /* width: 15%;
+  height: 15%; */
+}
+
+.logo-img {
+  width: 70%;
+  height: 70%;
+}
+
+.logo-wrapper {
+  margin-left: 5%;
+}
+</style>
