@@ -1,14 +1,26 @@
 <template>
-  <div>Here will be slider</div>
+  <img class="slide" :src="slides" alt="slide">
+
+
+
 </template>
 
 <script>
-import { defineComponent } from 'vue'
 
-export default defineComponent({
+export default ({
   name: 'Slider',
-  setup() {
-
+  props: {
+    slides: {
+      type: String,
+      required: true,
+    }
   },
+
 })
 </script>
+<style scoped>
+.slide {
+  width: 20%;
+  height: 20%;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Header/>
-    <Slider/>
+    <Slider :slides = "slide"/>
     <Products :products="fetchedProducts" />
   </div>
 </template>
@@ -18,7 +18,8 @@ export default {
   },
   data() {
     return {
-     fetchedProducts: []
+     fetchedProducts: [],
+     slide: ""
     }
   },
   methods: {
@@ -30,12 +31,22 @@ export default {
       } catch (err) {
         console.log(err);
       }
+    },
+    async fetchSlides() {
+      try {
+        const response = await axios.get("https://random.dog/woof.json")
+        this.slide = response.data.url
+        console.log(this.slide);
+      } catch (err) {
+      console.log(err);
+    }
     }
   },
   async mounted() {
     const savedProducts = JSON.parse(localStorage.getItem('products'))
     !savedProducts ?
    await this.fetchProducts() : this.fetchedProducts = savedProducts;
+   await this.fetchSlides()
   }
 }
 </script>
